@@ -50,8 +50,8 @@
     <!-- end of left content -->
     <?php
 		$id = $_GET['id'];
-		$query = mysql_query("SELECT * FROM products WHERE productid = '$id'") or die (mysql_error());
-		$row = mysql_fetch_array($query);
+		$query = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM products WHERE productid = '$id'") or die (mysql_error());
+		$row = mysqli_fetch_array($query);
 	?>
     <div class="center_content">
       <div class="center_title_bar">Product Details</div>
