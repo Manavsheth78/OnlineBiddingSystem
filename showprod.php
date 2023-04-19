@@ -50,6 +50,7 @@
 	  ?></div>
      	<?php
 	  		showprod();
+	  		
 		?>
     </div>
     <!-- end of center content -->

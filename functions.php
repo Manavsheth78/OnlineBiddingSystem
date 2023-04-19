@@ -106,11 +106,11 @@ function cats(){
 				echo "<div class='top_prod_box'></div>";
 				echo "<div class='center_prod_box'>";
 					echo "<div class='product_title'>There is no available product on this category</div>";
-				echo "<div class='product_img'><img src='administrator/images/products/nocateg.jpg' width='94' height='92' alt='' border='0' /></div>";
+				echo "<div class='product_img'><img src='images/nocateg.jpg' width='94' height='92' alt='' border='0' /></div>";
 				echo "<div class='prod_price'></div>";
 			echo "</div>";
 			echo "<div class='bottom_prod_box'></div>";
-			echo "<div class='prod_details_tab'><a href='details.html' class='prod_details'>details</a> </div>";
+			echo "<div class='prod_details_tab'><a href='details.php' class='prod_details'>details</a> </div>";
 			echo "</div>";
 		}else{
 		while($row = mysql_fetch_array($query))
