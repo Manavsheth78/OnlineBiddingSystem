@@ -99,7 +99,7 @@ function cats(){
 
 	function showprod(){
 		$id = $_GET['id'];
-		$query = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM products WHERE categoryid = '$id' AND status = 0") or die (mysql_error());
+		$query = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM products WHERE categoryid = '$id' AND status = 1") or die (mysql_error());
 		$res = mysqli_num_rows($query);
 		if($res == 0){
 			echo "<div class='prod_box'>";
@@ -113,25 +113,25 @@ function cats(){
 			echo "<div class='prod_details_tab'><a href='details.php' class='prod_details'>details</a> </div>";
 			echo "</div>";
 		}else{
-		while($row = mysql_fetch_array($query))
+		while($row = mysqli_fetch_array($query))
 		{
 			$prodid = $row['productid'];
 			$prodsbid = $row['startingbid'];
 			//for displaying highest bid and no of bidders
-			$query2 = mysql_query("SELECT * FROM bidreport WHERE productid = '$prodid'") or die (mysql_error());
-			$noofbidders = MYSQL_NUMROWS($query2);
+			$query2 = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM bidreport WHERE productid = '$prodid'") or die (mysql_error());
+			$noofbidders = mysqli_num_rows($query2);
 			$highbid = $prodsbid;
-			while($highonthis = mysql_fetch_array($query2)){
+			while($highonthis = mysqli_fetch_array($query2)){
 				$checkthis = $highonthis['bidamount'];
 				if($checkthis > $highbid){
 					$highbid = $checkthis;
 				}
 			}
-			$highestbidder = mysql_query("SELECT * FROM bidreport WHERE bidamount = '$highbid'")or die(mysql_error());
-			$highestbiddera = mysql_fetch_array($highestbidder);
+			$highestbidder = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM bidreport WHERE bidamount = '$highbid'")or die(mysql_error());
+			$highestbiddera = mysqli_fetch_array($highestbidder);
 			$hibidder = $highestbiddera['bidder'];
-			$name = mysql_query("SELECT * FROM member WHERE memberid = '$hibidder'")or die(mysql_error());
-			$namea = mysql_fetch_array($name);
+			$name = mysqli_query($conn= new mysqli('localhost','root','','biddingsystemdb'),"SELECT * FROM member WHERE memberid = '$hibidder'")or die(mysql_error());
+			$namea = mysqli_fetch_array($name);
 			$highname = $namea['userid'];
 			echo "<div class='prod_box'>";
 				echo "<div class='top_prod_box'></div>";
